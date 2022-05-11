@@ -13,6 +13,8 @@ def main(request):
 
 
 
+
+
 def insert(request):
     # 1-linux 입력
     Curriculum.objects.create(name='linux')
@@ -27,9 +29,13 @@ def insert(request):
 
 def show(request):
     curriculum = Curriculum.objects.all()
-    result = ''
-    for c in curriculum:
-     result += c.name + '<br>'
-    return HttpResponse(result)
+    # result = ''
+    # for c in curriculum:
+    # #  result += c.name + '<br>'
+    # return HttpResponse(result)
+    return render(
+        request, 'show.html',
+        {'data':curriculum}
+    )
 
 # Create your views here.
