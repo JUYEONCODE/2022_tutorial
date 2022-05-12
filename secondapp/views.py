@@ -1,8 +1,8 @@
 
 # Create your views here.
-
+from django.shortcuts import render
 from django.http import HttpResponse
-from . models import Course
+from . models import Armyshop, Course
 
 
 def main(request):
@@ -10,10 +10,14 @@ def main(request):
 
 def show(request):
     course = Course.objects.all()
-    result = ''
-    for c in course:
-     result += c.name + '<br>'
-    return HttpResponse(result)
+    # result = ''
+    # for c in curriculum:
+    # #  result += c.name + '<br>'
+    # return HttpResponse(result)
+    return render(
+        request, 'secondapp/show.html',
+        {'data':course}
+    )
 
 def insert(request):
     Course(name='데이터 분석', cnt=30).save()
@@ -22,7 +26,14 @@ def insert(request):
     Course(name='인공지능', cnt=20).save()
     return HttpResponse('완료')
 
+def army_shop(request):
+    shops = Armyshop.objects.all()
+    print(shops)
 
+    return render(
+        request,'secondapp/army_shop.html',
+        {'data':shops}
+    )
 
 
     
