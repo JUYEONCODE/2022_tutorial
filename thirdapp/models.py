@@ -50,7 +50,7 @@ class Playground(models.Model):
     name = models.CharField(max_length=50, null=True)
     address = models.CharField(max_length=50, null=True)
     tel = models.CharField(max_length=20, null=True)
-    animals = models.ManyToManyField(Animal, null=True)
+    animals = models.ManyToManyField(Animal, null=False)
     class Meta:
          db_table = 'playground'
 
@@ -79,9 +79,9 @@ class Emp(models.Model):
     empono = models.IntegerField(primary_key=True)
     ename = models.CharField(max_length=10)
     job = models.CharField(max_length=9)
-    mgr = models.IntegerField(max_length=11)    
+    mgr = models.IntegerField()    
     hiredate = models.DateTimeField()    
-    sal = models.IntegerField(max_length=11)    
+    sal = models.IntegerField()    
     comm = models.IntegerField(null=True)    
     deptno = models.ForeignKey(    
     Dept,
