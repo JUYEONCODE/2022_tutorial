@@ -54,4 +54,6 @@ def req_post(request):
         return HttpResponse(result)
     return render(request, 'firstapp/post.html')
 
-# Create your views here.
+
+def req_ajax4(request):
+    return render(request, 'firstapp/ajax4.html')
