@@ -88,7 +88,7 @@ DATABASES = {
         'PASSWORD': '1234',
         'HOST': '15.164.153.191',
         'PORT': 3306
-        }
+        },
 }
 DATABASE_ROUTERS = ['thirdapp.router.DBRouter']
 

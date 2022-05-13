@@ -11,8 +11,15 @@ def shop(request):
         {'shop_list': shop_list}
 )
 
+
+
+
 def jeju_olle(request):
-    jeju_olle_list = JejuOlle.objects.all()
+    # jeju_olle_list = JejuOlle.objects.all()
+    time = request.GET.get('time')
+    if not time: time = ''
+    jeju_olle_list = JejuOlle.objects.filter(
+        time_info__contains=time)
     
     return render(
         request,

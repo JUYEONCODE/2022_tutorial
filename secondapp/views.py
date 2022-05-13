@@ -26,9 +26,29 @@ def insert(request):
     Course(name='인공지능', cnt=20).save()
     return HttpResponse('완료')
 
-def army_shop(request):
-    shops = Armyshop.objects.all()
+def army_shop2(request, year, month):
+    shops = Armyshop.objects.filter(
+        year=year, month=month)
     print(shops)
+
+    return render(
+        request,'secondapp/army_shop.html',
+        {'data':shops}
+    )
+
+def army_shop(request):
+    # shops = Armyshop.objects.all()
+    # print(shops)
+
+    #             GET['prd']
+    prd = request.GET.get('prd')
+    if not prd:
+        prd = ''
+
+    shops = Armyshop.objects.filter(
+        name__contains=prd
+    )
+        
 
     return render(
         request,'secondapp/army_shop.html',

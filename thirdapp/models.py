@@ -76,18 +76,19 @@ class Dept(models.Model):
     class Meta: 
         db_table = 'dept'
 
-class Dept(models.Model):
+# class Emp(models.Model):
+#     empono = models.IntegerField(primary_key=True)
+#     ename = models.CharField(max_length=10)
+#     job = models.CharField(max_length=9)
+#     mgr = models.IntegerField(max_length=11)    
+#     hiredate = models.DateTimeField()    
+#     sal = models.IntegerField(max_length=11)    
+#     comm = models.IntegerField(null=True)    
+#     deptno = models.ForeignKey(Dept)    
+#     Dept,
+#     on_delete = models.CASCADE,
+#     db_column = 'deptno'
 
-    empono = models.IntegerField(primary_key=True)
-    ename = models.CharField(max_length=10)
-    job = models.CharField(max_length=9)
-    mgr = models.IntegerField(max_length=11)    
-    hiredate = models.DateTimeField()    
-    sal = models.IntegerField(max_length=11)    
-    comm = models.IntegerField(null=True)    
-    deptno = models.ForeignKey(Dept)    
-       
-    class Meta: 
-        db_table = 'dept'  
-
-
+#     class Meta: 
+#         db_table = 'emp'  
+#         managed = False
