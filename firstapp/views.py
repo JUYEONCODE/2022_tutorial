@@ -38,4 +38,20 @@ def show(request):
         {'data':curriculum}
     )
 
+def req_get(request):
+    a = request.GET.get('a')
+    b = request.GET.get('b')
+    c = request.GET['c']
+    result = '%s %s %s' % (a, b, c)
+    return HttpResponse(result)
+    
+def req_post(request):
+    if request.method == 'POST':
+        a = request.POST.get('a')
+        b = request.POST.get('b')
+        c = request.POST['c']
+        result = '%s %s %s' % (a, b, c)
+        return HttpResponse(result)
+    return render(request, 'firstapp/post.html')
+
 # Create your views here.

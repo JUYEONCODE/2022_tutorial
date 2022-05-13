@@ -1,6 +1,8 @@
 from urllib import request
-from django.shortcuts import render
-from .models import Shop,JejuOlle
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
+from .models import Shop,JejuOlle, Owner
+
 
 def shop(request):
     shop_list = Shop.objects.all()
@@ -26,3 +28,15 @@ def jeju_olle(request):
         'thirdapp/jeju_olle.html',
         {'jeju_olle_list': jeju_olle_list}
 )
+
+
+
+def owner(request):
+  if request.method == 'POST':
+    name = request.POST.get('name')
+
+    owner = Owner(name=name)
+    owner.save()
+
+    return HttpResponse('주인 정보 등록 완료')
+  return render(request, 'thirdapp/owner.html', {})

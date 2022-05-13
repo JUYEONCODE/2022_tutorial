@@ -33,6 +33,7 @@ class Owner(models.Model):
     name = models.CharField(max_length=50, null=True)
     class Meta:
         db_table = 'owner'
+        
 class Animal(models.Model):
     name = models.CharField(max_length=50, null=True)
     age = models.IntegerField(null=True)
@@ -76,19 +77,20 @@ class Dept(models.Model):
     class Meta: 
         db_table = 'dept'
 
-# class Emp(models.Model):
-#     empono = models.IntegerField(primary_key=True)
-#     ename = models.CharField(max_length=10)
-#     job = models.CharField(max_length=9)
-#     mgr = models.IntegerField(max_length=11)    
-#     hiredate = models.DateTimeField()    
-#     sal = models.IntegerField(max_length=11)    
-#     comm = models.IntegerField(null=True)    
-#     deptno = models.ForeignKey(Dept)    
-#     Dept,
-#     on_delete = models.CASCADE,
-#     db_column = 'deptno'
+class Emp(models.Model):
+    empono = models.IntegerField(primary_key=True)
+    ename = models.CharField(max_length=10)
+    job = models.CharField(max_length=9)
+    mgr = models.IntegerField(max_length=11)    
+    hiredate = models.DateTimeField()    
+    sal = models.IntegerField(max_length=11)    
+    comm = models.IntegerField(null=True)    
+    deptno = models.ForeignKey(    
+    Dept,
+    on_delete = models.CASCADE,
+    db_column = 'deptno')
 
-#     class Meta: 
-#         db_table = 'emp'  
-#         managed = False
+    class Meta: 
+        db_table = 'emp'  
+        managed = False
+
