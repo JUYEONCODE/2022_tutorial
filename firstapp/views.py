@@ -98,6 +98,4 @@ def filter(request):
 
 def template(request):
     return render(
-        request, 'firstapp/template.html',
-        {}
-    )
+        request, 'firstapp/template.html',{})
