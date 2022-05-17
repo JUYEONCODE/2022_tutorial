@@ -105,18 +105,22 @@ def template(request):
 
 
 def form_model(request):
-    if request.method == 'POST':
-        form = CurriculumForm(request.POST)
-        if form.is_valid():
-        
-            c = form.save(commit=False)
-            c.save()
+  if request.method == 'POST':
+    name = request.POST.get('name')
+    c = Curriculum(name=name)
+    c.save()
 
-            return redirect('/first/form/model/')
-    else:
-        form = CurriculumForm()
+    form = CurriculumForm(request.POST)
+    if form.is_valid():
+      # commit False 사용 시 Curriculum 모델클래스로 반환
+      c = form.save(commit=False)
+      c.save()      
+      return redirect('/first/form/model/')
 
-    return render(
-        request, 'firstapp/form_model.html',
-        { 'form': form }
-)
+  else:
+    form = CurriculumForm()
+
+  return render(
+    request, 'firstapp/form_model.html',
+    { 'form': form }
+  )
