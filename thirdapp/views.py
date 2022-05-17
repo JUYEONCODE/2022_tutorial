@@ -3,6 +3,28 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import Hospital, Shop,JejuOlle, Owner
 
+from django.shortcuts import redirect
+from .forms import OwnerForm
+
+def owner_save(request):
+    if request.method == 'POST':
+        form = OwnerForm(request.POST)
+        if form.is_valid():
+        
+            c = form.save(commit=False)
+            c.save()
+
+            return redirect('/third/owner/save/')
+    else:
+        form = OwnerForm()
+
+    return render(
+        request, 'thirdapp/owner_save.html',
+        { 'form': form }
+)
+
+
+
 
 def shop(request):
     shop_list = Shop.objects.all()
