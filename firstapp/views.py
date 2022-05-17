@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Curriculum
 
+from django.shortcuts import redirect
+from .forms import CurriculumForm
+
 def index1(request):
     return HttpResponse('<u>Hello</u>')
 
@@ -99,3 +102,21 @@ def filter(request):
 def template(request):
     return render(
         request, 'firstapp/template.html',{})
+
+
+def form_model(request):
+    if request.method == 'POST':
+        form = CurriculumForm(request.POST)
+        if form.is_valid():
+        
+            c = form.save(commit=False)
+            c.save()
+
+            return redirect('/first/form/model/')
+    else:
+        form = CurriculumForm()
+
+    return render(
+        request, 'firstapp/form_model.html',
+        { 'form': form }
+)
