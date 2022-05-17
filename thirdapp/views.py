@@ -1,7 +1,7 @@
 from urllib import request
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from .models import Shop,JejuOlle, Owner
+from .models import Hospital, Shop,JejuOlle, Owner
 
 
 def shop(request):
@@ -45,3 +45,12 @@ def owner(request):
 
     return HttpResponse('주인 정보 등록 완료')
   return render(request, 'thirdapp/owner.html', {})
+
+
+def hospital(request): 
+    hospitals = Hospital.objects.all()
+
+    return render(request, 
+    'thirdapp/hospital.html', 
+    {'hospitals': hospitals}
+    )

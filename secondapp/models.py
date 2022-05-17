@@ -14,3 +14,5 @@ class Armyshop(models.Model):
     class Meta:
         db_table = 'army_shop'
         managed = False
+
+

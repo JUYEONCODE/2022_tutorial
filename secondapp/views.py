@@ -58,3 +58,4 @@ def army_shop(request):
 def req_ajax_exam(request):
     return render(request, 'secondapp/ajax.html')
     
+
